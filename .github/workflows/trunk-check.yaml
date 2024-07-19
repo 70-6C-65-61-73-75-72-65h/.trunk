@@ -19,10 +19,22 @@ jobs:
         run: |
           pip install ansible-lint
 
-      - name: Install Trunk.io
+      - name: Download and Install Trunk.io
         run: |
-          curl -sL https://path-to-correct-installation-script.sh | bash
+          # Замените URL на реальный URL для скачивания бинарного файла Trunk.io
+          curl -L https://example.com/path-to-trunkio-binary -o trunkio
+          chmod +x trunkio
+          sudo mv trunkio /usr/local/bin/
+
+      - name: Verify Trunk.io Installation
+        run: |
+          trunkio --version
+          which trunkio
 
       - name: Run Trunk.io
         run: |
-          trunk.io run
+          trunkio run
+
+      - name: Run ansible-lint
+        run: |
+          ansible-lint .
