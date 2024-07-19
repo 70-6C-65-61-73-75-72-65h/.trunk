@@ -19,29 +19,7 @@ jobs:
       cancel-in-progress: true
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.x'
-
-      - name: Install ansible-lint
-        run: |
-          pip install ansible-lint
-
-      - name: Run ansible-lint
-        run: |
-          ansible-lint . --format json > ansible-lint-report.json
-
-      - name: Upload ansible-lint report
-        uses: actions/upload-artifact@v3
-        with:
-          name: ansible-lint-report
-          path: ansible-lint-report.json
-
       - name: Trunk Check
-        uses: trunk-io/trunk-action@v1.1.16
+        uses: trunk-io/trunk-action@v1
         with:
           check-mode: payload
