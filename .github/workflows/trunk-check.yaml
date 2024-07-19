@@ -19,7 +19,19 @@ jobs:
       cancel-in-progress: true
 
     steps:
-      - name: Trunk Check
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install ansible-lint
+        run: |
+          pip install ansible-lint
+
+      - name: Run Trunk.io
         uses: trunk-io/trunk-action@v1
         with:
           check-mode: payload
