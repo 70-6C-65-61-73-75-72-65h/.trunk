@@ -42,6 +42,6 @@ jobs:
           path: ansible-lint-report.json
 
       - name: Trunk Check
-        uses: trunk-io/trunk-action@v1
+        uses: trunk-io/trunk-action@v1.1.16
         with:
           check-mode: payload
